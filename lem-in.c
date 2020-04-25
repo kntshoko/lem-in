@@ -115,9 +115,36 @@ char *end(char **str)
   i++;
  }
  point = ft_joint(start,"|",end);
-//   ft_strdel(&start);
-//   ft_strdel(&end);
+   ft_strdel(&start);
+   ft_strdel(&end);
  return (point);
+}
+
+char *conn(char **str)
+{
+  char *con;
+  char *temp;
+  char *s;
+  int i;
+
+  i = 0;  
+  con = ft_strnew(0);
+ ft_putendl("******************");
+  while(str[i] != NULL)
+  {
+	
+   s = ft_strstr(str[i], "-");
+   if (s != NULL)
+   {
+    temp = ft_joint(con, " ; ", str[i]);
+    ft_strdel(&con);
+    con = ft_strdup(temp);
+    ft_strdel(&temp);    
+   }
+    i++;
+  }
+ ft_putendl("******************");
+ return(con);
 }
 
 int main (void){
@@ -125,7 +152,9 @@ int main (void){
  char **str = ft_strsplit(s, '\n');
  char *rooms = room(str);
  char *points = end(str);
+ char *connections = conn(str);
  ft_putendl(rooms);
  ft_putendl(points);
+ ft_putendl(connections);
  return (0);
 }
