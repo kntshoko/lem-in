@@ -21,8 +21,8 @@ int main()
 	char **con;
 //	char paths[100][100];
 	char start[100]= "0";
-/*	char room0[100][100];
-	char room2[100][100];
+	char *room0[100];
+/*	char room2[100][100];
 	char room3[100][100];
 	char room4[100][100];
 	char room1[100][100];*/
@@ -36,6 +36,7 @@ int main()
 	int j = 0;
 	char **sp;
 	int x;
+	printf("check == %s\n", room0[0]);
 	printf("check == %d\n", i);
 	while(con[i] != NULL)
 	{
@@ -43,15 +44,30 @@ int main()
 		x = 0;
 		while(sp[x] != NULL)
 		{
-			if(ft_strchr("000", '0') == 0)
-				j++;
-		
-			printf("i == %d  x == %d str == %s\n",i,x, sp[x]);
+			if(ft_strcmp(sp[x], "0") == 0)
+			{
+				int y = 0;
+				while(room0[y])
+					y++;
+				if(x == 0)
+					room0[y] = sp[1];
+				else
+					room0[y] = sp[0];
+				con[i] = "  ";			
+			j++;
+			printf("i == %d str == %s\n",i, sp[x]);
+			}
+					
 			x++;
 		}
 		i++;
 	}
 	printf("conn == %d\n", i);
 	printf("start == %d\n", j);
+	printf("links start == %s -%s \n", room0[0],room0[1]);
+j = 0;
+while(con[j])
+	printf("%s, ", con[j++]);
+	printf(" \n");
 	return(0);
 }
