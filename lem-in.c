@@ -59,7 +59,6 @@ char *room(char **str)
  char *temp;
  char *temp2;
  int i;
- int j;
  int c;
 
  i = 0;
@@ -68,7 +67,6 @@ char *room(char **str)
  {
   if (ft_wordc(str[i],' ') == 3)
   {
-   j = 0;
    c = 0;
    while (str[i][c] != ' ')
     c++;
